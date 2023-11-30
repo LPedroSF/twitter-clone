@@ -1,23 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Feed.css";
 import Post from './Post';
 import TweetBox from './TweetBox';
+import db from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 function Feed() {
+  const [posts, setPosts] = useState([]);
+  const postCollection = collection(db, "posts");
+
+  useEffect (() => {
+    const getPosts = async () => {
+      try {
+        const data = await getDocs(postCollection);
+        const filteredData = data.docs.map((doc) => ({  
+          ...doc.data(), 
+          id: doc.id,     
+        }));
+        setPosts(filteredData);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    getPosts();
+  }, []);
+  
   return (
     <div className='feed'>
-        <div className='feed__header'>
-            <h2>Home</h2>
-        </div>
-        <TweetBox />
+      <div className='feed__header'>
+          <h2>Home</h2>
+      </div>
+      <TweetBox />
+      {posts.map((post) => (
         <Post 
-          displayName="Billy C."
-          username="billx"
-          verified
-          text="I'm radiant!!!!!"
-          avatar ="https://media.wired.com/photos/593261cab8eb31692072f129/master/pass/85120553.jpg"
-          image ="https://media.giphy.com/media/QDvPya2RWexjL3MXWd/giphy.gif"
-        />        
+          key = {post.text}
+          displayName = {post.displayName}
+          username = {post.username}
+          verified = {post.verified}
+          text = {post.text}
+          avatar = {post.avatar}
+          image = {post.image}
+        />
+      ))}
     </div>
   )
 }
