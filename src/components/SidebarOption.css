@@ -12,15 +12,23 @@
 }
 
 .sidebarOption > .MuiSvgIcon-root{
-    padding: 20px; 
+    padding: 16px;  
+    font-size: 36px;
 }
 
 .sidebarOption > h2 {
-    font-weight: 800;
-    font-size: 20px;
+    display: block;
+    font-weight: 500;
+    font-size: 24px;
     margin-right: 20px;
 }
 
 .sidebarOption--active{
     color: var(--twitter-color);
+}
+
+@media (max-width: 1294px){
+    .sidebarOption > h2 {
+        display: none;
+    }
 }

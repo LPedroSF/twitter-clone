@@ -18,8 +18,8 @@ function Widgets() {
       <div className='widgets__widgetContainer'>
         <h2>Whats happening?</h2>
         <TwitterTweetEmbed tweetid={"858551177860055040"} />
-        <TwitterTimelineEmbed sourceType = "profile" screenName="cleverqazi" options={{height: 400}} />
-        <TwitterShareButton url={"https://facebook.com/cleverprogrammer"} options={{text: "#reactjs is awesome", via: "cleverqazi"}} />
+        <TwitterTimelineEmbed sourceType = "profile" screenName="elonmusk" options={{height: 600}} />
+        <TwitterShareButton url={"luisfaria.co.uk"} options={{text: "Tweeting via ", via: ""}} />
       </div>
     </div>
   );
