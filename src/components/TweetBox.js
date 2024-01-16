@@ -13,12 +13,11 @@ function TweetBox() {
   const setTweet = async () => {
     try{
       await addDoc(postCollection, {
-        displayName: "Pedro Faria",
-        username: "LPedroSF",
+        displayName: "Guest",
+        username: "SmartGuest123",
         verified: true,
         text: tweetText,
         image: tweetImg,
-        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRooEIRFQfYM5QRbwZusaFFd-HdEO-eRCPFCg&usqp=CAU",
       });
       window.location.reload()
     } catch(err){
@@ -30,7 +29,7 @@ function TweetBox() {
     <div className='tweetBox'>
         <form>
             <div className='tweetBox__input'>
-                <Avatar src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRooEIRFQfYM5QRbwZusaFFd-HdEO-eRCPFCg&usqp=CAU" />
+                <Avatar />
                 <input
                   value={tweetText}
                   onChange={(e) => setTweetText(e.target.value)}
